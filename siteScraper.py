@@ -33,7 +33,7 @@ def infoupdate(filename, statuses, undelivered):
 
 # DEP
 def checkstatus(carrier_name, tracking_number, row, file, custompath, chromedriverpath):
-    if 'AMZN' in carrier_name or 'Amazon' in carrier_name:
+    if 'AMZN' in carrier_name or 'Amazon' in carrier_name or 'UPS' in carrier_name:
         delivered = 'Unknown'
     else:
         url = f'https://www.aftership.com/track/{tracking_number}'
