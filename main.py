@@ -8,7 +8,7 @@ chromedriverpath = r"\chromedriver\path"
 ############################
 
 # Read file and return array with carrier name, tracking number, and row number
-data = siteScraping.inforead(inputfile)
+data = siteScraper.inforead(inputfile)
 
 #Create txt file to load error info onto
 file = open('statusCheckErrors.txt', 'w')
@@ -18,7 +18,7 @@ print("Checking shipping statuses...")
 statuses = []
 undelivered = []
 for i in range(len(data)):
-    delivered = siteScraping.checkstatus(data[i][0], data[i][1], data[i][2], file, datapath, chromedriverpath)
+    delivered = siteScraper.checkstatus(data[i][0], data[i][1], data[i][2], file, datapath, chromedriverpath)
     status = [data[i][2], delivered]
     statuses.append(status)
     if 'Delivered' not in delivered:
@@ -28,6 +28,6 @@ for i in range(len(data)):
 
 print("All shipping statues have been checked.")
 # Load arrays onto csv file to flag undelivered rows, and add row of statuses
-siteScraping.infoupdate(inputfile, statuses, undelivered)
+siteScraper.infoupdate(inputfile, statuses, undelivered)
 
 print(f"Check updated_{inputfile} for the shipping information and statusCheckErrors.txt for any errors.")
